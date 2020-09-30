@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nicklaus.dao.PatientMapper">
+    <select id="findPatientByStatusAndDeptId" resultType="patient" parameterType="patient">
+        select
+              chId,regId,deptId,chName,chAge
+        from registration natural join casehistory
+        where
+              date_format(regDate,'%e %b %y') = date_format(now(), '%e %b %y')
+          and
+              regStatus = #{regStatus}
+          and
+              deptId = #{deptId}
+          and
+              docId=#{docId}
+    </select>
+</mapper>

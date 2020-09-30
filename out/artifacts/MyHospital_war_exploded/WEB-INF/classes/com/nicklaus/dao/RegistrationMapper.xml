@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nicklaus.dao.RegistrationMapper">
+    <insert id="save" parameterType="registration">
+        insert into registration values (#{regId},#{chId},#{docId},#{levelId},#{deptId},#{daTime},#{regDate},#{regStatus},#{regIsPaper})
+    </insert>
+
+    <select id="findMaxRegId" resultType="int">
+        select max(regId) from registration
+    </select>
+
+    <select id="findByRegId" resultType="registration" parameterType="int">
+        select * from registration where regId = #{regId}
+    </select>
+
+    <update id="updateRegStatusById" parameterType="registration">
+        update registration set regStatus = #{regStatus} where regId = #{regId}
+    </update>
+</mapper>

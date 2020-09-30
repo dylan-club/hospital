@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nicklaus.dao.CaseHistoryMapper">
+    <select id="findMaxChId" resultType="int" >
+        select max(chId) from casehistory
+    </select>
+
+    <select id="findByChId" resultType="caseHistory" parameterType="int">
+        select * from casehistory where chId = #{chId}
+    </select>
+
+    <insert id="save" parameterType="caseHistory">
+        insert into casehistory values (null,#{chId},#{chName},#{chGender},#{chBirthday},#{chAge},#{idCard},#{chAddress})
+    </insert>
+</mapper>

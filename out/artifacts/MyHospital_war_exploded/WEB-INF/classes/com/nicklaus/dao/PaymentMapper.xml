@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.nicklaus.dao.PaymentMapper">
+    <insert id="save" parameterType="payment">
+        insert into payment values (null,#{payId},#{chId},#{chName},#{payTotal},#{payReal},#{payBack},#{payType},#{payDate})
+    </insert>
+
+    <select id="findMaxPayId" resultType="int">
+        select max(payId) from payment
+    </select>
+</mapper>
